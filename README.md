@@ -1,5 +1,14 @@
 # productivity-app
 
+## General app description
+
+This app will provide:
+ - Todo list
+ - Detailed items
+ - Log book
+ - Project planning
+    - Gantt charts etc.
+
 ## What is this app?
 
 I'm not sure what this app will become yet.
