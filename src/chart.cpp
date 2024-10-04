@@ -1,6 +1,8 @@
 #include "chart.h"
 #include "item.h"
 #include <vector>
+#include <string>
+#include <unordered_map>
 
 void Chart::add_item() {
     add_item(get_item_from_user());
@@ -30,8 +32,9 @@ void Chart::add_item(const Item _item) {
 }
 
 void Chart::remove_item(const Item* _item) {
+    // need to check if this works
     std::vector<Item*> parents;
-    
+
     if (_item->parents.empty()) {
         for (auto child_ptr {std::begin(_item->children)}; child_ptr != std::end(_item->children); ++child_ptr) {
             parents.clear();
@@ -50,11 +53,32 @@ void Chart::remove_item(const Item* _item) {
         // likewise for each parent node with all children of _item
         // remove 
     }
-    
+
     delete _item;
     update_levels();
 }
 
 void Chart::update_levels() {
     // bfs through and update heirarchical level variable
+    // need to check if this works
+    std::unordered_map<Item*, bool> visited;
+    std::vector<Item*> queue {items};
+    std::vector<Item*> tmp_queue;
+    uint8_t level {};
+
+    while (queue.empty() == false) {
+        tmp_queue.clear();
+        for (auto it {std::begin(queue)}; it != std::end(queue); ++it) {
+            if (!visited[*it]) {
+                visited[*it] = true;
+                (*it)->heirarchical_level = level;
+                for (auto child_ptr {std::begin((*it)->children)}; child_ptr != std::end((*it)->children); ++child_ptr) {
+                    tmp_queue.push_back(*child_ptr);
+                }
+            }
+        }
+
+        queue = tmp_queue;
+        level++;
+    }
 }
