@@ -73,7 +73,9 @@ void Chart::update_levels() {
                 visited[*it] = true;
                 (*it)->heirarchical_level = level;
                 for (auto child_ptr {std::begin((*it)->children)}; child_ptr != std::end((*it)->children); ++child_ptr) {
-                    tmp_queue.push_back(*child_ptr);
+                    if (!visited[*child_ptr]) {
+                        tmp_queue.push_back(*child_ptr);
+                    }
                 }
             }
         }
