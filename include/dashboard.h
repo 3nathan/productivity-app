@@ -2,30 +2,29 @@
 #define __DASHBOARD__
 
 #include "item.h"
-#include <vector>
 #include <cstdint>
 
-enum DashboardType {
-    ToDoList,
-    ProductivityChart
+enum Type {
+    List,
+    Gantt
 };
 
 class Dashboard {
 public:
-    void add_item();
-    void remove_item();
+    virtual void add_item() = 0;
+    virtual void add_item(const Item _item) = 0;
+    virtual void remove_item(const Item* _item) = 0;
+
+protected:
+    [[nodiscard]] Item get_item_from_user() const;
 
 private:
     const struct {
         std::string name;
         std::string desc;
 
-        DashboardType type;
+        Type type;
     } params;
-
-    std::vector<Item> items;
-
-    [[nodiscard]] Item get_item_from_user() const;
 };
 
 #endif
