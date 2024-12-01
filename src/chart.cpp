@@ -86,6 +86,35 @@ void Chart::update_levels() {
     }
 }
 
+std::unordered_map<uint8_t, uint8_t> Chart::get_num_items_on_level() const {
+    // bfs through the list
+    std::unordered_map<uint8_t, uint8_t> num_items;
+
+    std::unordered_map<Item*, bool> visited;
+    std::vector<Item*> queue {items};
+    std::vector<Item*> tmp_queue;
+
+    while (queue.empty() == false) {
+        tmp_queue.clear();
+        for (auto it {std::begin(queue)}; it != std::end(queue); ++it) {
+            if (!visited[*it]) {
+                visited[*it] = true;
+                num_items[(*it)->heirarchical_level]++;
+
+                for (auto child_ptr {std::begin((*it)->children)}; child_ptr != std::end((*it)->children); ++child_ptr) {
+                    if (!visited[*child_ptr]) {
+                        tmp_queue.push_back(*child_ptr);
+                    }
+                }
+            }
+        }
+
+        queue = tmp_queue;
+    }
+
+    return num_items;
+}
+
 // what does this need to do?
 //
 // setup blank 'slate'
@@ -98,15 +127,15 @@ void Chart::update_levels() {
 // blank out space for item name
 
 void Chart::pretty_print() const {
-    pretty_print(200, 80);
+    pretty_print(200, 80, 5);
 }
 
 void Chart::pretty_print(
     const uint8_t w,
-    const uint8_t h
+    const uint8_t h,
+    const uint8_t sep_lines
 ) const {
+    char slate[w][h];
 
+    
 }
-
-
-
