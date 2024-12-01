@@ -11,6 +11,7 @@ public:
     void add_item() override;
     void add_item(const Item _item) override;
     void remove_item(const Item* _item) override;
+    void pretty_print() const override;
 
 private:
     const struct {

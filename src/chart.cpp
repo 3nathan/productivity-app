@@ -84,3 +84,7 @@ void Chart::update_levels() {
         level++;
     }
 }
+
+void Chart::pretty_print() const {
+
+}

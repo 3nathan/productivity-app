@@ -15,3 +15,7 @@ void Todo::remove_item(const Item* _item) {
 
     items.erase(it);
 }
+
+void Todo::pretty_print() const {
+    
+}
