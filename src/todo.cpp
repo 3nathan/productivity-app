@@ -1,6 +1,7 @@
 #include "todo.h"
 #include "item.h"
 #include "dashboard.h"
+#include <iostream>
 
 void Todo::add_item() {
     add_item(get_item_from_user());
@@ -17,5 +18,11 @@ void Todo::remove_item(const Item* _item) {
 }
 
 void Todo::pretty_print() const {
-    
+    for (auto it {std::begin(items)}; it != std::end(items); ++it) {
+        std::cout << it->name << std::endl;
+        
+        if (std::next(it) != std::end(items)) {
+            std::cout << "\n\n\n";
+        }
+    }
 }

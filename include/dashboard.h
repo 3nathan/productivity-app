@@ -19,12 +19,6 @@ public:
 protected:
     [[nodiscard]] Item get_item_from_user() const;
 
-    void print_connecting_lines(
-        const uint8_t n_upper,
-        const uint8_t n_lower,
-        const uint8_t n_lines = 3
-    ) const;
-
 /* private: */
 /*     const struct { */
 /*         std::string name; */

@@ -23,6 +23,11 @@ private:
     std::vector<Item*> items;
 
     void update_levels();
+
+    void pretty_print(
+        const uint8_t w,
+        const uint8_t h
+    ) const;
 };
 
 #endif

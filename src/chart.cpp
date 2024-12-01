@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <iostream>
 
 void Chart::add_item() {
     add_item(get_item_from_user());
@@ -85,6 +86,27 @@ void Chart::update_levels() {
     }
 }
 
+// what does this need to do?
+//
+// setup blank 'slate'
+// setup positions (determined by level of item, and num items per level, and length of item name)
+// for simplicity, all items will have length of 24 characters
+//
+// go through all parents and draw a line from the parent
+// to the child
+//
+// blank out space for item name
+
 void Chart::pretty_print() const {
+    pretty_print(200, 80);
+}
+
+void Chart::pretty_print(
+    const uint8_t w,
+    const uint8_t h
+) const {
 
 }
+
+
+
